@@ -1,5 +1,5 @@
 all:
-	pyro5-ns
+	python -m Pyro5.nameserver
 
 run_server:
 	python server/main.py
