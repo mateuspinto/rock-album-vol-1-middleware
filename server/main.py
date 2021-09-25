@@ -1,6 +1,8 @@
 import Pyro5.api
 import json
 import sqlite3
+import logging
+import sys
 
 
 @Pyro5.api.expose
@@ -205,10 +207,13 @@ class RockAlbumServer(object):
 
 
 if __name__ == "__main__":
+    logging.basicConfig(stream=sys.stdout, level=logging.DEBUG, format='%(asctime)s :: [%(levelname)s] %(message)s;')
+    logging.getLogger("Pyro5").setLevel(logging.DEBUG)
+    logging.getLogger("Pyro5.core").setLevel(logging.DEBUG)
+
     with Pyro5.server.Daemon() as DAEMON:
         NAME_SERVER = Pyro5.api.locate_ns()
         URI = DAEMON.register(RockAlbumServer)
         NAME_SERVER.register("rockalbum.server", URI)
 
-        print("Servidor Iniciado :3")
         DAEMON.requestLoop()
