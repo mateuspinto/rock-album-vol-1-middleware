@@ -151,8 +151,8 @@ class RockAlbumServer(object):
         self.DATABASE.commit()
         return {'error': 0}
 
-    def user__get_coins(self):
-        return {'error': 0, 'coins': self.__get_coins()}
+    def user__get_coins(self, EMAIL: str):
+        return {'error': 0, 'coins': self.__get_coins(EMAIL)}
 
     def user__is_admin(self, EMAIL: str):
         DB_CUR = self.DATABASE.cursor()

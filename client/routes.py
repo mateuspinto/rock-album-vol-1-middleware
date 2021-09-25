@@ -29,228 +29,168 @@ def register(SERVER):
             return EMAIL
 
 
-# def admin__create_giftcard(SERVER, EMAIL):
-#     REQUEST = {
-#         'method': 'admin/create_giftcard',
-#         'email': EMAIL,
-#         'giftcard_key': input('Insira a chave do cartão presente: ')
-#     }
+def admin__create_giftcard(SERVER, _):
+    GIFTCARD_KEY = input('Insira a chave do cartão presente: ')
 
-#     RESPONSE = SERVER.method(REQUEST)
+    RESPONSE = SERVER.admin__create_giftcard(GIFTCARD_KEY)
 
-#     if RESPONSE['error'] == 1:
-#         print(f'Erro! {RESPONSE["error_message"]}')
-#     else:
-#         print('Feito!')
+    if RESPONSE['error'] == 1:
+        print(f'Erro! {RESPONSE["error_message"]}')
+    else:
+        print('Feito!')
 
 
-# def admin__create_stickers(SERVER, EMAIL):
-#     REQUEST = {
-#         'method': 'admin/create_stickers',
-#         'email': EMAIL,
-#         'sticker_name': input('Insira o nome da figurinha: ')
-#         'sticker_number': int(input('Insira a quantidade de figurinhas: '))
-#     }
+def admin__create_stickers(SERVER, _):
+    STICKER_NAME = input('Insira o nome da figurinha: ')
+    STICKER_NUMBER = int(input('Insira a quantidade de figurinhas: '))
 
-#     RESPONSE = SERVER.method(REQUEST)
+    RESPONSE = SERVER.admin__create_stickers(STICKER_NAME, STICKER_NUMBER)
 
-#     if RESPONSE['error'] == 1:
-#         print(f'Erro! {RESPONSE["error_message"]}')
-#     else:
-#         print('Feito!')
+    if RESPONSE['error'] == 1:
+        print(f'Erro! {RESPONSE["error_message"]}')
+    else:
+        print('Feito!')
 
 
-# def admin__draw_lucky_prize(SERVER, EMAIL):
-#     REQUEST = {
-#         'method': 'admin/draw_lucky_prize',
-#         'email': EMAIL,
-#     }
+def admin__draw_lucky_prize(SERVER, _):
 
-#     RESPONSE = SERVER.method(REQUEST)
+    RESPONSE = SERVER.admin__draw_lucky_prize()
 
-#     if RESPONSE['error'] == 1:
-#         print(f'Erro! {RESPONSE["error_message"]}')
-#     else:
-#         print('Feito!')
+    if RESPONSE['error'] == 1:
+        print(f'Erro! {RESPONSE["error_message"]}')
+    else:
+        print('Feito!')
 
 
-# def admin__op(SERVER, EMAIL):
-#     REQUEST = {
-#         'method': 'admin/op',
-#         'email': EMAIL,
-#         'target_email': input('Insira o email a ser tornado administrador: ')
-#     }
+def admin__op(SERVER, _):
+    TARGET_EMAIL = input('Insira o email a ser tornado administrador: ')
 
-#     RESPONSE = SERVER.method(REQUEST)
+    RESPONSE = SERVER.admin__op(TARGET_EMAIL)
 
-#     if RESPONSE['error'] == 1:
-#         print(f'Erro! {RESPONSE["error_message"]}')
-#     else:
-#         print('Feito!')
+    if RESPONSE['error'] == 1:
+        print(f'Erro! {RESPONSE["error_message"]}')
+    else:
+        print('Feito!')
 
 
-# def admin__unop(SERVER, EMAIL):
-#     REQUEST = {
-#         'method': 'admin/unop',
-#         'email': EMAIL,
-#         'target_email': input('Insira o email a ser removido de administrador: ')
-#     }
+def admin__unop(SERVER, _):
+    TARGET_EMAIL = input('Insira o email a ser removido de administrador: ')
 
-#     RESPONSE = SERVER.method(REQUEST)
+    RESPONSE = SERVER.admin__unop(TARGET_EMAIL)
 
-#     if RESPONSE['error'] == 1:
-#         print(f'Erro! {RESPONSE["error_message"]}')
-#     else:
-#         print('Feito!')
+    if RESPONSE['error'] == 1:
+        print(f'Erro! {RESPONSE["error_message"]}')
+    else:
+        print('Feito!')
 
 
-# def album__get_album(SERVER, EMAIL):
-#     REQUEST = {
-#         'method': 'album/get_album',
-#         'email': EMAIL,
-#     }
+def album__get_album(SERVER, EMAIL):
 
-#     RESPONSE = SERVER.method(REQUEST)
+    RESPONSE = SERVER.album__get_album(EMAIL)
 
-#     if RESPONSE['error'] == 1:
-#         print(f'Erro! {RESPONSE["error_message"]}')
-#     else:
-#         print('Figurinhas:')
-#         for sticker in RESPONSE['stickers']:
-#             print(sticker)
+    if RESPONSE['error'] == 1:
+        print(f'Erro! {RESPONSE["error_message"]}')
+    else:
+        print('Figurinhas:')
+        for sticker in RESPONSE['stickers']:
+            print(sticker)
 
 
-# def album__get_free_stickers(SERVER, EMAIL):
-#     REQUEST = {
-#         'method': 'album/get_free_stickers',
-#         'email': EMAIL,
-#     }
+def album__get_free_stickers(SERVER, EMAIL):
 
-#     RESPONSE = SERVER.method(REQUEST)
+    RESPONSE = SERVER.album__get_free_stickers(EMAIL)
 
-#     if RESPONSE['error'] == 1:
-#         print(f'Erro! {RESPONSE["error_message"]}')
-#     else:
-#         print('Id - Nome da figurinhas:')
-#         for sticker in RESPONSE['stickers']:
-#             print(f'{sticker["id"]} - {sticker["sticker_name"]}')
+    if RESPONSE['error'] == 1:
+        print(f'Erro! {RESPONSE["error_message"]}')
+    else:
+        print('Id - Nome da figurinhas:')
+        for sticker in RESPONSE['stickers']:
+            print(f'{sticker["id"]} - {sticker["sticker_name"]}')
 
 
-# def album__paste_sticker(SERVER, EMAIL):
-#     REQUEST = {
-#         'method': 'album/paste_sticker',
-#         'email': EMAIL,
-#         'sticker_id': input('Insira o ID da figurinha: ')
-#     }
+def album__paste_sticker(SERVER, EMAIL):
+    STICKER_ID = input('Insira o ID da figurinha: ')
 
-#     RESPONSE = SERVER.method(REQUEST)
+    RESPONSE = SERVER.album__paste_sticker(EMAIL, STICKER_ID)
 
-#     if RESPONSE['error'] == 1:
-#         print(f'Erro! {RESPONSE["error_message"]}')
-#     else:
-#         print('Feito!')
+    if RESPONSE['error'] == 1:
+        print(f'Erro! {RESPONSE["error_message"]}')
+    else:
+        print('Feito!')
 
 
-# def community_market__buy_sticker(SERVER, EMAIL):
-#     REQUEST = {
-#         'method': 'community_market/buy_sticker',
-#         'email': EMAIL,
-#         'sticker_name': input('Insira o nome da figurinha: ')
-#     }
+def community_market__buy_sticker(SERVER, EMAIL):
+    STICKER_NAME = input('Insira o nome da figurinha: ')
 
-#     RESPONSE = SERVER.method(REQUEST)
+    RESPONSE = SERVER.community_market__buy_sticker(EMAIL, STICKER_NAME)
 
-#     if RESPONSE['error'] == 1:
-#         print(f'Erro! {RESPONSE["error_message"]}')
-#     else:
-#         print('Feito!')
+    if RESPONSE['error'] == 1:
+        print(f'Erro! {RESPONSE["error_message"]}')
+    else:
+        print('Feito!')
 
 
-# def community_market__get_sticker_price(SERVER, EMAIL):
-#     REQUEST = {
-#         'method': 'community_market/get_sticker_price',
-#         'email': EMAIL,
-#         'sticker_name': input('Insira o nome da figurinha: ')
-#     }
+def community_market__get_sticker_price(SERVER, EMAIL):
+    STICKER_NAME = input('Insira o nome da figurinha: ')
 
-#     RESPONSE = SERVER.method(REQUEST)
+    RESPONSE = SERVER.community_market__get_sticker_price(EMAIL, STICKER_NAME)
 
-#     if RESPONSE['error'] == 1:
-#         print(f'Erro! {RESPONSE["error_message"]}')
-#     else:
-#         print(f'A figurinha custa {RESPONSE["price"]}')
+    if RESPONSE['error'] == 1:
+        print(f'Erro! {RESPONSE["error_message"]}')
+    else:
+        print(f'A figurinha custa {RESPONSE["price"]}')
 
 
-# def community_market__get_stickers_waiting_for_sale(SERVER, EMAIL):
-#     REQUEST = {
-#         'method': 'community_market/get_stickers_waiting_for_sale',
-#         'email': EMAIL,
-#     }
+def community_market__get_stickers_waiting_for_sale(SERVER, EMAIL):
 
-#     RESPONSE = SERVER.method(REQUEST)
+    RESPONSE = SERVER.community_market__get_stickers_waiting_for_sale(EMAIL)
 
-#     if RESPONSE['error'] == 1:
-#         print(f'Erro! {RESPONSE["error_message"]}')
-#     else:
-#         print('Preço - Nome da figurinhas')
-#         for sticker in RESPONSE['stickers']:
-#             print(f'{sticker["price"]} - {sticker["sticker_name"]}')
+    if RESPONSE['error'] == 1:
+        print(f'Erro! {RESPONSE["error_message"]}')
+    else:
+        print('Preço - Nome da figurinhas')
+        for sticker in RESPONSE['stickers']:
+            print(f'{sticker["price"]} - {sticker["sticker_name"]}')
 
 
-# def community_market__put_sticker_to_sell(SERVER, EMAIL):
-#     REQUEST = {
-#         'method': 'community_market/put_sticker_to_sell',
-#         'email': EMAIL,
-#         'sticker_id': input('Insira o ID da figurinha: ')
-#         'price': int(input('Insira o preço (em número inteiro) desejado na figurinha: '))
-#     }
+def community_market__put_sticker_to_sell(SERVER, EMAIL):
+    STICKER_ID = input('Insira o ID da figurinha: ')
+    PRICE = int(input('Insira o preço (em número inteiro) desejado na figurinha: '))
 
-#     RESPONSE = SERVER.method(REQUEST)
+    RESPONSE = SERVER.community_market__put_sticker_to_sell(EMAIL, STICKER_ID, PRICE)
 
-#     if RESPONSE['error'] == 1:
-#         print(f'Erro! {RESPONSE["error_message"]}')
-#     else:
-#         print('Feito!')
+    if RESPONSE['error'] == 1:
+        print(f'Erro! {RESPONSE["error_message"]}')
+    else:
+        print('Feito!')
 
 
-# def user__get_coins(SERVER, EMAIL):
-#     REQUEST = {
-#         'method': 'user/get_coins',
-#         'email': EMAIL,
-#     }
+def user__get_coins(SERVER, EMAIL):
 
-#     RESPONSE = SERVER.method(REQUEST)
+    RESPONSE = SERVER.user__get_coins(EMAIL)
 
-#     if RESPONSE['error'] == 1:
-#         print(f'Erro! {RESPONSE["error_message"]}')
-#     else:
-#         print(f'Você tem {RESPONSE["coins"]}')
+    if RESPONSE['error'] == 1:
+        print(f'Erro! {RESPONSE["error_message"]}')
+    else:
+        print(f'Você tem {RESPONSE["coins"]}')
 
 
-# def user__retrieve_giftcard(SERVER, EMAIL):
-#     REQUEST = {
-#         'method': 'user/retrieve_giftcard',
-#         'email': EMAIL,
-#         'giftcard_key': input('Insira a chave do cartão presente: ')
-#     }
+def user__retrieve_giftcard(SERVER, EMAIL):
+    GIFTCARD_KEY = input('Insira a chave do cartão presente: ')
 
-#     RESPONSE = SERVER.method(REQUEST)
+    RESPONSE = SERVER.user__retrieve_giftcard(EMAIL, GIFTCARD_KEY)
 
-#     if RESPONSE['error'] == 1:
-#         print(f'Erro! {RESPONSE["error_message"]}')
-#     else:
-#         print('Feito!')
+    if RESPONSE['error'] == 1:
+        print(f'Erro! {RESPONSE["error_message"]}')
+    else:
+        print('Feito!')
 
 
-# def official_market__buy_sticker_pack(SERVER, EMAIL):
-#     REQUEST = {
-#         'method': 'official_market/buy_sticker_pack',
-#         'email': EMAIL,
-#     }
+def official_market__buy_sticker_pack(SERVER, EMAIL):
 
-#     RESPONSE = SERVER.method(REQUEST)
+    RESPONSE = SERVER.official_market__buy_sticker_pack(EMAIL)
 
-#     if RESPONSE['error'] == 1:
-#         print(f'Erro! {RESPONSE["error_message"]}')
-#     else:
-#         print('Feito!')
+    if RESPONSE['error'] == 1:
+        print(f'Erro! {RESPONSE["error_message"]}')
+    else:
+        print('Feito!')
